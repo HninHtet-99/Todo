@@ -11,18 +11,8 @@
       "completed": true
     },
     {
-      "id": 3,
-      "title": "My Third Todo",
-      "completed": false
-    },
-    {
-      "id": 173,
-      "title": "helo",
-      "completed": false
-    },
-    {
-      "id": 365,
-      "title": "min ga lar par",
+      "id": 507,
+      "title": "Hello World",
       "completed": false
     }
   ]
