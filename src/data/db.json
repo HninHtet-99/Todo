@@ -2,18 +2,13 @@
   "todos": [
     {
       "id": 1,
-      "title": "My First Todo",
+      "title": "My First Todo UPDATE",
       "completed": false
     },
     {
       "id": 2,
-      "title": "My Second Todo",
+      "title": "My Second Todo edited",
       "completed": true
-    },
-    {
-      "id": 507,
-      "title": "Hello World",
-      "completed": false
     }
   ]
 }
