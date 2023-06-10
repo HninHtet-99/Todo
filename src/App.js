@@ -65,7 +65,7 @@ function App() {
   return (
     <div className="todo-app-container">
       <div className="todo-app">
-        <h2>Todo App</h2>
+        <h2>Todo App with react</h2>
         <TodoForm addTodo={addTodo} />
         <TodoList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
         <CheckAllAndRemaining />
