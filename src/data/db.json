@@ -1,14 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 647,
-      "title": "what to do",
-      "completed": false
-    },
-    {
-      "id": 367,
-      "title": "hello",
-      "completed": false
-    }
-  ]
+  "todos": []
 }

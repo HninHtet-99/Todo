@@ -1,9 +1,11 @@
 import React from "react";
 
-const ClearCompletedBtn = () => {
+const ClearCompletedBtn = ({ cleanCompleted }) => {
   return (
     <div>
-      <button className="button">Clear completed</button>
+      <button className="button" onClick={cleanCompleted}>
+        Clear completed
+      </button>
     </div>
   );
 };
