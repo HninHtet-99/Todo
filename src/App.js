@@ -5,17 +5,36 @@ import TodoList from "./components/TodoList";
 import CheckAllAndRemaining from "./components/CheckAllAndRemaining";
 import TodoFilters from "./components/TodoFilters";
 import ClearCompletedBtn from "./components/ClearCompletedBtn";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function App() {
   let [todos, setTodos] = useState([]);
+  const [filteredTodos, setFilteredTodos] = useState(todos);
+
   useEffect(() => {
     fetch("http://localhost:3001/todos")
       .then((res) => res.json())
       .then((todos) => {
         setTodos(todos);
+        setFilteredTodos(todos);
       });
   });
+
+  //todo filter
+  let filteredBy = useCallback(
+    (filter) => {
+      if (filter === "All") {
+        setFilteredTodos(todos);
+      }
+      if (filter === "Active") {
+        setFilteredTodos(todos.filter((todo) => !todo.completed));
+      }
+      if (filter === "Completed") {
+        setFilteredTodos(todos.filter((todo) => todo.completed));
+      }
+    },
+    [todos]
+  );
 
   let addTodo = (todo) => {
     // update data at server side
@@ -95,13 +114,17 @@ function App() {
       <div className="todo-app">
         <h2>Todo App with react</h2>
         <TodoForm addTodo={addTodo} />
-        <TodoList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
+        <TodoList
+          todos={filteredTodos}
+          deleteTodo={deleteTodo}
+          editTodo={editTodo}
+        />
         <CheckAllAndRemaining
           remainingCount={remainingCount}
           checkAll={checkAll}
         />
         <div className="other-buttons-container">
-          <TodoFilters />
+          <TodoFilters filteredBy={filteredBy} />
           <ClearCompletedBtn cleanCompleted={cleanCompleted} />
         </div>
       </div>

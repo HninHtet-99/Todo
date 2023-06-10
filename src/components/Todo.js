@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const Todo = ({ todo, deleteTodo, editTodo }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [title, setTitle] = useState(todo.title);
+  //edit
   let onEditeHandler = (e) => {
     e.preventDefault();
     let editedTodo = {
@@ -13,11 +14,25 @@ const Todo = ({ todo, deleteTodo, editTodo }) => {
     editTodo(editedTodo);
     setIsEdit(false);
   };
+  //checkbox
+  let checkBoxHandler = () => {
+    let editedTodo = {
+      id: todo.id,
+      title,
+      completed: !todo.completed,
+    };
+    editTodo(editedTodo);
+    setIsEdit(false);
+  };
   return (
     <div>
       <li className="todo-item-container">
         <div className="todo-item">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={todo.completed}
+            onChange={checkBoxHandler}
+          />
           {!isEdit && (
             <span
               className={`todo-item-label ${
