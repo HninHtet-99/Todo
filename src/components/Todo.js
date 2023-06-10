@@ -1,40 +1,35 @@
 import React, { useState } from "react";
 
-const Todo = ({ todo, deleteTodo, updateTodo }) => {
-  const [isedit, setIsEdit] = useState(false);
+const Todo = ({ todo, deleteTodo, editTodo }) => {
+  const [isEdit, setIsEdit] = useState(false);
   const [title, setTitle] = useState(todo.title);
-
-  let updateTodoHandler = (e) => {
+  let onEditeHandler = (e) => {
     e.preventDefault();
-    let updatedTodo = {
+    let editedTodo = {
       id: todo.id,
       title,
       completed: todo.completed,
     };
-
-    updateTodo(updatedTodo);
+    editTodo(editedTodo);
     setIsEdit(false);
   };
-
   return (
     <div>
       <li className="todo-item-container">
         <div className="todo-item">
           <input type="checkbox" />
-          {!isedit && (
+          {!isEdit && (
             <span
               className={`todo-item-label ${
                 todo.completed ? "line-through" : ""
               }`}
-              onDoubleClick={() => {
-                setIsEdit(true);
-              }}
+              onDoubleClick={() => setIsEdit(true)}
             >
               {todo.title}
             </span>
           )}
-          {isedit && (
-            <form onSubmit={updateTodoHandler}>
+          {isEdit && (
+            <form action="" onSubmit={onEditeHandler}>
               <input
                 autoFocus
                 type="text"

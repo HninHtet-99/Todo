@@ -1,7 +1,7 @@
 import React from "react";
 import Todo from "./Todo";
 
-const TodoList = ({ todos, deleteTodo, updateTodo }) => {
+const TodoList = ({ todos, deleteTodo, editTodo }) => {
   return (
     <div>
       <ul className="todo-list">
@@ -10,7 +10,7 @@ const TodoList = ({ todos, deleteTodo, updateTodo }) => {
             todo={todo}
             key={todo.id}
             deleteTodo={deleteTodo}
-            updateTodo={updateTodo}
+            editTodo={editTodo}
           />
         ))}
       </ul>
